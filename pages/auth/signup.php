@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// include '../../connection/security.php'; 
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +11,9 @@ session_start();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../../assets/img/logoaverroes.png">
   <title>
-    Soft UI Dashboard 3 by Creative Tim
+    Siakad Averroes
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -25,11 +27,11 @@ session_start();
   <!-- Nepcha Analytics (nepcha.com) -->
   <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
   <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
-  <link  href="../../assets/css/style.css" rel="stylesheet" />
+  <link href="../../assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body class="">
-  
+
   <main class="main-content  mt-0">
     <section class="min-vh-100 mb-8">
       <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-image: url('../../assets/img/curved-images/curved14.jpg');">
@@ -63,7 +65,7 @@ session_start();
                     </svg>
                   </a>
                 </div>
-                
+
                 <div class="col-3 me-auto px-1">
                   <a class="btn btn-outline-light w-100" href="javascript:;">
                     <svg width="24px" height="32px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -92,7 +94,7 @@ session_start();
                     <?php endforeach; ?>
                   </div>
                 <?php endif; ?>
-                <form role="form text-left" method="POST" action="../../actions/auth/register.php">
+                <form role="form text-left" method="POST" action="../../controller/auth/register.php">
                   <div class="mb-3">
                     <input type="text" name="nama" class="form-control" placeholder="Nama" aria-label="Nama" aria-describedby="name-addon" required>
                   </div>
@@ -102,9 +104,7 @@ session_start();
                   <div class="mb-3">
                     <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" required>
                   </div>
-                  <div class="mb-3">
-                    <input type="password" name="confirm_password" class="form-control" placeholder="Konfirmasi Password" aria-label="Confirm Password" aria-describedby="password-addon" required>
-                  </div>
+
                   <div class="form-check form-check-info text-left">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                     <label class="form-check-label" for="flexCheckDefault">
@@ -126,41 +126,16 @@ session_start();
     <footer class="footer py-5">
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mb-4 mx-auto text-center">
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Company
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              About Us
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Team
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Products
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Blog
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-              Pricing
-            </a>
-          </div>
+
           <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-dribbble"></span>
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-twitter"></span>
-            </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
+            <a href="https://www.instagram.com/averroes.is/" target="_blank" class="text-secondary me-xl-4 me-4">
               <span class="text-lg fab fa-instagram"></span>
             </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-pinterest"></span>
+            <a href="https://www.instagram.com/averroes.is/" target="_blank" class="text-secondary me-xl-4 me-4">
+              <span class="text-lg fab fa-facebook"></span>
             </a>
-            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-              <span class="text-lg fab fa-github"></span>
+            <a href="https://www.tiktok.com/@averroes.is" target="_blank" class="text-secondary me-xl-4 me-4">
+              <span class="text-lg fab fa-tiktok"></span>
             </a>
           </div>
         </div>

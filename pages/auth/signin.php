@@ -1,6 +1,8 @@
 <?php
 session_start();
+// include '../../connection/security.php'; 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +10,7 @@ session_start();
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../../assets/img/favicon.png">
+  <link rel="icon" type="image/png" href="../../assets/img/logoaverroes.png">
   <title>
     Siakad Averroes
   </title>
@@ -45,7 +47,7 @@ session_start();
                       ?>
                     </div>
                   <?php endif; ?>
-                  <form role="form" action="../../actions/auth/login.php" method="POST">
+                  <form role="form" action="../../controller/auth/login.php" method="POST">
                     <label>Username</label>
                     <div class="mb-3">
                       <input type="text" name="username" class="form-control" placeholder="Username" required>
