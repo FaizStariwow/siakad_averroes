@@ -1,3 +1,10 @@
+<?php
+session_start();
+// include '../../connection/security.php'; 
+
+include '../../controller/admin/dashboard_controller.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,7 +59,7 @@
                           <i class="fa-solid fa-user"></i>
                         </div>
                         <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                          1600
+                          <?= $data_guru['jumlah_guru']?>
                         </h5>
                         <span class="text-white text-sm">Guru</span>
                       </div>
@@ -71,7 +78,7 @@
                           <i class="fa-solid fa-users text-dark"></i>
                         </div>
                         <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                          357
+                          <?= $data_siswa['jumlah_siswa']?>
                         </h5>
                         <span class="text-white text-sm">Siswa</span>
                       </div>
@@ -91,7 +98,7 @@
                           <i class="fa-solid fa-chalkboard-user text-dark"></i>
                         </div>
                         <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                          2300
+                          <?= $data_kelas['jumlah_kelas']?>
                         </h5>
                         <span class="text-white text-sm">Kelas</span>
                       </div>
@@ -109,7 +116,7 @@
                           <i class="fa-solid fa-books text-dark"></i>
                         </div>
                         <h5 class="text-white font-weight-bolder mb-0 mt-3">
-                          940
+                          <?= $data_mapel['jumlah_mapel']?>
                         </h5>
                         <span class="text-white text-sm">Pelajaran</span>
                       </div>
@@ -181,7 +188,7 @@
           </div>
         </div>
         <!-- Footer Start -->
-        <?php include './pages/murid/layout/footer.php'; ?>
+        <?php include '../layout/footer.php'; ?>
       </div>
       <!-- Footer Start -->
       <?php include '../layout/footer.php'; ?>
