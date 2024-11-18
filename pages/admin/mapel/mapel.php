@@ -1,6 +1,7 @@
 <?php include '../../../connection/security.php' ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +25,7 @@
     rel="stylesheet"
     href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
 </head>
+
 <body class="g-sidenav-show  bg-gray-100">
   <!-- Sidebar Content -->
   <?php include '../../../layout/sidebar.php'; ?>
@@ -100,10 +102,10 @@
                           <span class="text-sm font-weight-bold mb-0"><?= $row['wali_mapel'] ?></span>
                         </td>
                         <td class="align-middle text-center">
-                          <a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#editmapel"  data-id="<?= $row['id'] ?>" data-nama="<?= $row['nama_mapel'] ?>" data-wali="<?= $row['wali_mapel'] ?>">
+                          <a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#editmapel" data-id="<?= $row['id'] ?>" data-nama="<?= $row['nama_mapel'] ?>" data-wali="<?= $row['wali_mapel'] ?>">
                             <i class="fas fa-edit"></i>
                           </a>
-                          <a href="../../../controller/admin/mapel_control.php?id=<?= $row['id'] ?>&action=delete" class="text-secondary font-weight-bold text-xs" onclick="confirmDelete(event, <?= $row['id'] ?>)">
+                          <a href="../../../controller/admin/mapel_controller.php?id=<?= $row['id'] ?>&action=delete" class="text-secondary font-weight-bold text-xs" onclick="confirmDelete(event, <?= $row['id'] ?>)">
                             <i class="fas fa-trash"></i>
                           </a>
                         </td>
@@ -129,9 +131,11 @@
             </div>
           </div>
         </footer>
-      </main>
-      <?php include './add.php'; ?>
-      <?php include './edit.php'; ?>
+        <?php include './edit.php'; ?>
+        <?php include './add.php'; ?>
+  </main>
+
+
   <?php include '../../../layout/sidebar_conf.php' ?>
   <!-- Sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -151,42 +155,51 @@
   <script src="../../../assets/js/soft-ui-dashboard.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   <script>
-        const modalEdit = document.getElementById('editmapel'); 
-        modalEdit.addEventListener('show.bs.modal', () => {
-          const button = event.relatedTarget;
-          const id = button.getAttribute('data-id');
-          const nama = button.getAttribute('data-nama');
-          const kode = button.getAttribute('data-kode');
-          const wali = button.getAttribute('data-wali');
-          modalEdit.querySelector('#id').value = id;
-          modalEdit.querySelector('#nama').value = nama;
-          modalEdit.querySelector('#kode').value = kode;
-          modalEdit.querySelector('#wali').value = wali;
-        });
+    const modalEdit = document.getElementById('editmapel');
+    modalEdit.addEventListener('show.bs.modal', () => {
+      const button = event.relatedTarget;
+      const id = button.getAttribute('data-id');
+      const nama = button.getAttribute('data-nama');
+      const kode = button.getAttribute('data-kode');
+      const wali = button.getAttribute('data-wali');
+      modalEdit.querySelector('#id').value = id;
+      modalEdit.querySelector('#nama').value = nama;
+      modalEdit.querySelector('#kode').value = kode;
+      modalEdit.querySelector('#wali').value = wali;
 
-        function confirmDelete(event, id) {
-            event.preventDefault(); // Prevent the default action of the <a> tag
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                    });
-                    setTimeout(() => {
-                        window.location.href = '../../../controller/admin/user_control.php?id=' + id + '&action=delete';
-                    }, 2000); 
-                }
-            });
+      if (role == 'Admin') {
+        modalEdit.querySelector('#role').value = 1;
+      } else if (role == 'Guru') {
+        modalEdit.querySelector('#role').value = 2;
+      } else {
+        modalEdit.querySelector('#role').value = 3;
+      }
+    });
+
+    function confirmDelete(event, id) {
+      event.preventDefault(); // Prevent the default action of the <a> tag
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+          setTimeout(() => {
+            window.location.href = '../../../controller/admin/mapel_controller.php?id=' + id + '&action=delete';
+          }, 2000);
         }
-    </script>
+      });
+    }
+  </script>
 </body>
+
 </html>

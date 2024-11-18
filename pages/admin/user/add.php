@@ -29,7 +29,7 @@
                     <option value="">Pilih Role</option>
                     <option value="1">Admin</option>
                     <option value="2">Guru</option>
-                    <option value="3">User</option>
+                    <option value="3">Murid</option>
                 </select>
             </div>
             <div class="modal-footer">

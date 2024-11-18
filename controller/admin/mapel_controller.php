@@ -37,7 +37,7 @@ function delete_mapel($id){
     $sql = "DELETE FROM mapel WHERE id = $id";
     $conn->query($sql);
     
-    header('location: ../../pages/admin/mapel.php');
+    header('location: ../../pages/admin/mapel/mapel.php');
 }
 function insert_mapel(){
     include '../../connection/connection.php';

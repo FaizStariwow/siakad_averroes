@@ -8,7 +8,7 @@
       </div>
       <div class="modal-body
         ">
-            <form action="../../../controller/admin/mapel_control.php?action=add" method="POST">
+            <form action="../../../controller/admin/mapel_controller.php?action=add" method="POST">
             <div class="form-group">
                 <label for="nama">Nama mapel</label>
                 <input type="text" class="form-control"  name="nama_mapel" required>

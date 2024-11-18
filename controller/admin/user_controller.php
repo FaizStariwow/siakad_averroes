@@ -39,7 +39,7 @@ function delete_user($id){
     $sql = "DELETE FROM user WHERE id = $id";
     $conn->query($sql);
     
-    header('location: ../../pages/admin/user.php');
+    header('location: ../../pages/admin/user/user.php');
 }
 
 function add_user(){

@@ -9,26 +9,27 @@
 
       <div class="modal-body
         ">
-            <form action="../../../controller/admin/user_controller.php?action=edit" method="POST">
+            <form action="../../../controller/admin/kelas_controller.php?action=edit" method="POST">
             <div class="form-group">
-                <label for="nama">Nama</label>
+                <label for="nama">Nama Kelas</label>
                 <input type="text" class="form-control" id="nama" name="nama" required>
             </div>
             <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <label for="username">Kode Kelas</label>
+                <input type="text" class="form-control" id="kode_kelas" name="kodekelas" required>
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <label for="role">Role</label>
-                <select class="form-control" id="role" name="role" required>
-                    <option value="">Pilih Role</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Guru</option>
-                    <option value="3">User</option>
+                <label for="role">Wali Kelas</label>
+                <select class="form-control"  name="wali_kelas" required>
+                    <option value="">Pilih Wali kelas</option>
+                    <?php
+                    $guru = get_all_guru();
+                    while ($row = mysqli_fetch_assoc($guru)) {
+                    ?>
+                        <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
+                    <?php
+                    }
+                    ?>
                 </select>
             </div>
             <div class="modal-footer">

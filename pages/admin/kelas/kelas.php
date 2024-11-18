@@ -57,7 +57,7 @@
                 document.addEventListener('DOMContentLoaded', function() {
                   Swal.fire({
                     title: 'Berhasil!',
-                    text: '<?=  $_SESSION['msg'] ?>',
+                    text: '<?= $_SESSION['msg'] ?>',
                     icon: 'success',
                     confirmButtonText: 'OKE'
                   });
@@ -70,7 +70,7 @@
                 document.addEventListener('DOMContentLoaded', function() {
                   Swal.fire({
                     title: 'Gagal!',
-                    text: '<?=  $_SESSION['msg'] ?>',
+                    text: '<?= $_SESSION['msg'] ?>',
                     icon: 'error',
                     confirmButtonText: 'OKE'
                   });
@@ -87,7 +87,7 @@
                   <thead>
                     <tr>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama Kelas</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kode Kelas</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Wali Kelas</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7">Action</th>
@@ -111,7 +111,7 @@
                           <p class="text-sm font-weight-bold mb-0"><?= $row['kode_kelas'] ?></p>
                         </td>
                         <td class="text-sm">
-                          <span class="badge badge-sm bg-gradient-primary"><?= $row['wali_kelas'] ?></span>
+                          <p class="text-sm font-weight-bold mb-0"><?= $row['wali_kelas'] ?></p>
                         </td>
                         <td class="align-middle text-center">
                           <a href="" class="text-secondary font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#modal-edit" data-id="<?= $row['id'] ?>" data-nama="<?= $row['nama_kelas'] ?>" data-kode="<?= $row['kode_kelas'] ?>" data-wali="<?= $row['wali_kelas'] ?>">
@@ -152,7 +152,7 @@
   <?php include '../../../layout/sidebar_conf.php' ?>
   <?php include './edit.php' ?>
 
-  
+
   <!-- Sweet alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!--   Core JS Files   -->
@@ -169,25 +169,33 @@
   <script>
     let table = new DataTable('#tabelUser');
 
-    const modalEdit = document.getElementById('modal-edit'); 
+    const modalEdit = document.getElementById('modal-edit');
     modalEdit.addEventListener('show.bs.modal', () => {
       const button = event.relatedTarget;
       const id = button.getAttribute('data-id');
       const nama = button.getAttribute('data-nama');
-      const username = button.getAttribute('data-username');
-      const role = button.getAttribute('data-role');
+      const kode_kelas = button.getAttribute('data-kode');
+      const wali_kelas = button.getAttribute('data-wali');
 
       modalEdit.querySelector('#id').value = id;
       modalEdit.querySelector('#nama').value = nama;
-      modalEdit.querySelector('#username').value = username;
-      
-      if (role == 'Admin') {
-        modalEdit.querySelector('#role').value = 1;
-      } else if (role == 'Guru') {
-        modalEdit.querySelector('#role').value = 2;
-      } else {
-        modalEdit.querySelector('#role').value = 3;
-      }
+      modalEdit.querySelector('#kode_kelas').value = kode_kelas;
+
+      $.ajax({
+        url: '../../../controller/admin/kelas_controller.php? action=get_wali_kelas',
+        type: 'GET',
+        success: function(data) {
+          let result = JSON.parse(data);
+          let option = '<option value="">Pilih wali_kelas</option>';
+          result.foreach(element => {
+            if (element.id == wali) {
+              option += `<option value="${element.id}" selected>${element.nama}</option>`;
+            } else {
+              option += `<option value="${element.id}">${element.nama}</option>`;
+            }
+          });
+        }
+      })
     });
 
     function confirmDelete(event, id) {
@@ -208,13 +216,11 @@
             icon: "success"
           });
           setTimeout(() => {
-            window.location.href = '../../../controller/admin/user_controller.php?id=' + id + '&action=delete';
+            window.location.href = '../../../controller/admin/kelas_controller.php?id=' + id + '&action=delete';
           }, 2000);
         }
       });
     }
-
-    
   </script>
 </body>
 

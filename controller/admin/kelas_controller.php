@@ -21,15 +21,25 @@ function get_all_guru() {
     return $result;
 }
 
+function get_wali_kelas(){
+    include '../../../connection/connection.php';
+    $sql = "SELECT * FROM user WHERE role_id=2";
+    $result = $conn->query($sql);
+    $data = [];
+    while($row = mysqli_fetch_assoc($result)){
+        $data[] = $row;
+    }
+    echo json_encode($data);
+}
+
 function edit_kelas($id)
 {
     include '../../connection/connection.php';
     session_start();
     $nama = $_POST['nama'];
-    $kelasname = $_POST['kelasname'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $role = $_POST['role'];
-    $sql = "UPDATE kelas SET nama = '$nama', kelasname = '$kelasname', password = '$password', role_id = $role WHERE id = $id";
+    $kodekelas = $_POST['kodekelas'];
+    $walikelas = $_POST['walikelas'];
+    $sql = "UPDATE kelas SET nama = '$nama', kode_kelas = '$kodekelas', wali_kelas = $walikelas WHERE id = $id";
     
     if($conn->query($sql) === TRUE){
         $_SESSION['status'] = "success";
@@ -46,9 +56,16 @@ function edit_kelas($id)
 function delete_kelas($id){
     include '../../connection/connection.php';
     $sql = "DELETE FROM kelas WHERE id = $id";
-    $conn->query($sql);
     
-    header('location: ../../pages/admin/kelas.php');
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['status'] = "success";
+        $_SESSION['msg'] = "Data Berhasil Ditambahkan";
+        echo "<script>location.href = '../../pages/admin/kelas/kelas.php';</script>";
+    } else {
+        $_SESSION['status'] = "error";
+        $_SESSION['msg'] = "Data Gagal Ditambahkan";
+        echo "<script>location.href = '../../pages/admin/kelas/kelas.php';</script>";
+    }
 }
 
 function add_kelas(){
@@ -81,7 +98,6 @@ if (isset($_GET['action'])) {
     } elseif ($action == 'delete') {
         $id = $_GET['id'];
         delete_kelas($id);
-        header('location: ../../pages/admin/kelas/kelas.php');
     } elseif ($action == 'add') {
         add_kelas();
     }
