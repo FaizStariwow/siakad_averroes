@@ -1,0 +1,11 @@
+.text-gradient.text-info {
+    background-image: linear-gradient(310deg, #f97316, #eab308) !important;
+}
+
+.bg-gradient-info {
+    background-image: linear-gradient(310deg, #f97316 0%, #eab308 100%) !important;
+}
+
+.form-check-input .gradient:checked[type=checkbox] {
+    --bs-form-check-bg-image: linear-gradient(310deg, #f97316 0%, #eab308 100%) !important;
+}
